@@ -20,7 +20,6 @@ export class AddEditShopsComponent implements OnInit {
   faddress:string;
   flat:number;
   flong:number;
-  fid:number;
   errorMessage: any;
   existingShop :Shops;
   items$: Observable<Items[]>;
@@ -28,7 +27,6 @@ export class AddEditShopsComponent implements OnInit {
   constructor(private shopService: ShopsService, private _itemService: ItemsService, private avRoute: ActivatedRoute, private formBuilder: FormBuilder,private _router: Router) {
     this.title="Add";
     this.fname=" ";
-    this.fid=0;
     this.fcontactNumber=" "
     this.faddress=" "
     this.flat=0;
@@ -37,7 +35,6 @@ export class AddEditShopsComponent implements OnInit {
     this.shopForm = this.formBuilder.group({  
     shopId: 0,  
     name: ['', [Validators.required]],  
-    id: ['', [Validators.required]],
     contactNumber:['', [Validators.required]],
     address:['', [Validators.required]],
     lat:['', [Validators.required]],
@@ -77,12 +74,8 @@ export class AddEditShopsComponent implements OnInit {
         address: this.shopForm.get('address').value,
         long: this.shopForm.get('long').value,
         lat: this.shopForm.get('lat').value,
-        item: {
-          id: this.shopForm.get('id').value
-        }
-     
       };
-      console.log(shop)
+      //console.log(shop)
       this.shopService.addShop(shop)
       .subscribe((data) => {
         this._router.navigate(['/get-shops']);
@@ -98,11 +91,8 @@ else if (this.title == "Edit") {
     contactNumber: this.shopForm.get('contactNumber').value,
     lat: this.shopForm.get('lat').value,
     long: this.shopForm.get('long').value,
-    item: {
-      id: this.shopForm.get('id').value
-    }
   };
-  //console.log(shop)
+  console.log(shop)
   this.shopService.editShopById(shop.shopId, shop)
         .subscribe((data) => {
           this._router.navigate(['/get-shops']);
@@ -114,7 +104,6 @@ cancel() {
 }  
 
     get name() { return this.shopForm.get('name'); }
-    get id() { return this.shopForm.get('id'); }
     get address() { return this.shopForm.get('address'); }
     get contactNumber() { return this.shopForm.get('contactNumber'); }
     get lat() { return this.shopForm.get('lat'); }

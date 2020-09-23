@@ -48,21 +48,6 @@
         </span>
     </div>
     
-    <div class="form-group row">
-        <label class="control-label col-md-12" for="item">Item</label>
-        <div class="col-md-4">
-            <select class="form-control" type="number" formControlName="id" >
-                <option>Select</option>
-                <option  *ngFor="let item of  (items$ | async)" [ngValue]=item.id>
-                    {{item.name}}
-                </option>
-            </select>
-       </div>
-       <span class="text-danger" *ngIf="id.invalid && formDir.submitted">
-        Shop is required
-    </span>
-</div>
-    
     <div class="form-group">
         <button type="submit" class="btn btn-success ">Save</button>
         <button class="btn btn-secondary float-left"(click)="cancel()">Cancel</button>

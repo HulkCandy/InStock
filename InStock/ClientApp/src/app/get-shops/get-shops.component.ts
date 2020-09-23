@@ -13,9 +13,9 @@ import { Items } from '../models/items';
 })
 export class GetShopsComponent implements OnInit {
   shops$: Observable<Shops[]>;
-  items$: Observable<Items[]>;
 
-  constructor(private shopService: ShopsService,private itemsService: ItemsService) {
+
+  constructor(private shopService: ShopsService) {
   }
   ngOnInit() {
     this.loadShops();

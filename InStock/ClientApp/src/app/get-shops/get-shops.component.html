@@ -13,7 +13,6 @@
       <th>ContactNumber</th>
       <th>Lat</th>
       <th>Long</th>
-      <th>Item</th>
       <th></th>
       <th></th>
     </tr>
@@ -25,7 +24,6 @@
       <td>{{ shop.address }}</td>
       <td>{{ shop.lat }}</td>
       <td>{{ shop.long }}</td>
-      <td>{{ shop.item.name}}</td>
        <td><a [routerLink]="['/edit-shop/', shop.shopId]" class="btn btn-primary btn-sm float-right">Edit</a></td> 
       <td><a [routerLink]="" (click)="delete(shop.shopId)" class="btn btn-danger btn-sm float-right">Delete</a></td>  
     </tr>
